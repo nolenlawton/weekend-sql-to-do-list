@@ -1,0 +1,66 @@
+body {
+    background-color: #80d4f0;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+#addTaskSection {
+    background-color: #f08080;
+    width: 750px;
+    margin: auto;
+    margin-bottom: 25px;
+    padding: 25px;
+    border: 4px solid;
+    border-radius: 12px;
+    display: flex;
+    justify-content:space-between
+}
+
+#taskInput{
+    width: 300px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#addTaskButton{
+    font-size: 16px;
+}
+
+#toDoSection {
+    background-color: lightcoral;
+    width: 750px;
+    margin: auto;
+    margin-bottom: 25px;
+    padding: 25px;
+    border: 4px solid;
+    border-radius: 12px;
+    text-align: center;
+}
+
+#toDoTitle {
+    border-bottom: #80d4f0;
+}
+
+#taskSection{
+    justify-content:space-between
+}
+
+table {
+    border-spacing: 25px;
+  }
+
+tr {
+    width: 655px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid;
+    border-radius: 12px;
+    display: flex;
+    justify-content:space-between
+}
