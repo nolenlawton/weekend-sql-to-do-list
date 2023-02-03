@@ -55,9 +55,29 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(204);    // "No Content" 😶
         })
         .catch((err) => {
-            console.log('DELETE /songs/:id failed', err);
+            console.log('DELETE /task/:id failed', err);
             res.sendStatus(500);
         });
 });
+
+router.put('/:id', (req, res) => {
+    const queryText = `
+        UPDATE "to-do_table"
+        SET "isCompleted" = true
+        WHERE id = $1;
+    `;
+    const queryParams = [
+        req.params.id // $1
+    ];
+
+    pool.query(queryText, queryParams)
+        .then((dbRes) => {
+            res.sendStatus(204);    // "No Content" 😶
+        })
+        .catch((err) => {
+            console.log('PUT /task/:id failed', err);
+            res.sendStatus(500);
+        });
+})
 
 module.exports = router;

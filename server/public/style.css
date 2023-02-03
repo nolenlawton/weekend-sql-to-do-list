@@ -33,7 +33,7 @@ h1 {
 }
 
 #toDoSection {
-    background-color: lightcoral;
+    background-color: #f08080;
     width: 750px;
     margin: auto;
     margin-bottom: 25px;
@@ -64,4 +64,8 @@ tr {
     display: flex;
     justify-content:space-between;
     background-color: #cd6163;
+}
+
+.completed {
+    background-color: #7fe5b2;
 }
