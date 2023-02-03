@@ -62,5 +62,6 @@ tr {
     border: 4px solid;
     border-radius: 12px;
     display: flex;
-    justify-content:space-between
+    justify-content:space-between;
+    background-color: #cd6163;
 }
