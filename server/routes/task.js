@@ -5,7 +5,6 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-    // The statement we want to be executed in the database
     let queryText = `
         SELECT * FROM "to-do_table"
         `;
@@ -34,7 +33,7 @@ router.post('/', (req, res) => {
 
     pool.query(queryText, queryParams)
         .then((result) => {
-            console.log("Insert result:", result);
+            console.log("added task");
             res.sendStatus(201);
         })
         .catch((error) => {
@@ -52,6 +51,7 @@ router.delete('/:id', (req, res) => {
 
     pool.query(queryText, queryParams)
         .then((dbRes) => {
+            console.log('deleted task')
             res.sendStatus(204);    // "No Content" 😶
         })
         .catch((err) => {
