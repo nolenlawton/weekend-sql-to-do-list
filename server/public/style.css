@@ -59,7 +59,7 @@ tr {
     width: 655px;
     padding: 10px;
     margin: 10px;
-    border: 2px solid;
+    border: 4px solid;
     border-radius: 12px;
     display: flex;
     justify-content:space-between
