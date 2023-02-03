@@ -1,4 +1,5 @@
 CREATE TABLE "to-do_table" (
+    "id" SERIAL PRIMARY KEY,
     "task" VARCHAR(80) NOT NULL,
     "isCompleted" BOOLEAN
 );
