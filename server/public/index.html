@@ -13,10 +13,12 @@
     <h1>SQL To-Do List</h1>
 
 <section>
-    <h2 id="addTaskSection">
-            <label id="addText">Add a Task :</label>
-            <input type="text" id="taskInput" value="" placeholder="~task~"/>
-            <button id="addTaskButton">Add Task</button>
+    <h2>
+        <form id="addTaskSection">
+            <input type="text" id="taskInput" value="" placeholder="~add task~"/>
+            <button id="addTaskButton" class="button">+</button>
+            
+        </form>
     </h2>
 </section>
 
@@ -24,35 +26,9 @@
 <h2 id="toDoSection">
     <label id="#toDoTitle">To-Do</label>
 
-    <section id="taskSection">
-        <table>
-            <tr>
-                <td>
-                    - TASK 1
-                </td>
-                <td>
-                    <button>complete</button>
-                    <button>delete</button>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                    - TASK 2
-                </td>
-                <td>
-                    <button>complete</button>
-                    <button>delete</button>
-                </td>
-            </tr>    
-            <tr>
-                <td>
-                    - TASK 3
-                </td>
-                <td>
-                    <button>complete</button>
-                    <button>delete</button>
-                </td>
-            </tr>             
+    <section>
+        <table id="taskSection">
+
         </table>
     </section>
 </h2>
