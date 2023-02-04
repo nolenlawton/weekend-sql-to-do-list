@@ -25,10 +25,24 @@ function getTasks() {
     }).then(function (response) {
         console.log("GET /task response", response);
         for (let taskObject of response) {
-            $('#taskSection').append(`
-                <tr data-id='${taskObject.id}' data-isCompleted='${taskObject.isCompleted}'>
+            if (taskObject.isCompleted === true) {
+                $('#taskSection').append(`
+                <tr data-id='${taskObject.id}' class='completed'>
                     <td>
-                        - ${taskObject.task}
+                        ${taskObject.task}
+                        (completed)
+                    </td>
+                    <td>
+                        <button class="deleteButton">delete</button>
+                    </td>
+                </tr> 
+            `);
+            }
+            else {
+                $('#taskSection').append(`
+                <tr data-id='${taskObject.id}'>
+                    <td>
+                        ${taskObject.task}
                     </td>
                     <td>
                         <button class="completeButton">complete</button>
@@ -36,10 +50,12 @@ function getTasks() {
                     </td>
                 </tr>           
             `);
+            };
         };
     }).catch((err) => {
         console.error('GET failed', err);
     });
+
 
 };
 
@@ -86,8 +102,6 @@ function completeTask(event) {
     console.log('task was completed')
     let id = $(this).parents('tr').data('id');
 
-    $(this).parents('tr').addClass('completed') // doesn't work
-
     $.ajax({
         method: 'PUT',
         url: `/task/${id}`,
@@ -96,6 +110,7 @@ function completeTask(event) {
         }
     }).then(() => {
         getTasks()
+        // if($(this))
 
     }).catch((err) => {
         console.error('PUT failed', err);
