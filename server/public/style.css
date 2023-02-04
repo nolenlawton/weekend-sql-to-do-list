@@ -69,3 +69,26 @@ tr {
 .completed {
     background-color: #7fe5b2;
 }
+
+.button {
+    width: 40px;
+    height: 40px;
+    border:#7fe5b2;
+    color:grey;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    border: 2px solid grey;
+}
+
+.onHoverAdd {
+    background-color: #7fe5b2;
+    color: white;
+    border-color: white;
+}
+
+.onHoverDelete {
+    background-color: red;
+    color: white;
+    border-color: white;
+}

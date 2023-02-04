@@ -6,11 +6,33 @@ function onReady() {
     console.log('JQuery')
 
     $('#addTaskButton').on('click', addTask)
+    $('#addTaskButton').on('mouseover', onHoverAdd)
+    $('#addTaskButton').on('mouseout', offHoverAdd)
+
 
     $(document).on('click', '.completeButton', completeTask)
+    $(document).on('mouseover', '.completeButton', onHoverAdd)
+    $(document).on('mouseout', '.completeButton', offHoverAdd)
+
     $(document).on('click', '.deleteButton', deleteTask)
+    $(document).on('mouseover', '.deleteButton', onHoverDelete)
+    $(document).on('mouseout', '.deleteButton', offHoverDelete)
 
     getTasks()
+}
+
+function onHoverAdd() {
+    $(this).addClass('onHoverAdd')
+}
+function offHoverAdd() {
+    $(this).removeClass('onHoverAdd')
+}
+
+function onHoverDelete() {
+    $(this).addClass('onHoverDelete')
+}
+function offHoverDelete() {
+    $(this).removeClass('onHoverDelete')
 }
 
 // GET request!
@@ -33,7 +55,7 @@ function getTasks() {
                         (completed)
                     </td>
                     <td>
-                        <button class="deleteButton">delete</button>
+                        <button class="deleteButton button">-</button>
                     </td>
                 </tr> 
             `);
@@ -45,8 +67,8 @@ function getTasks() {
                         ${taskObject.task}
                     </td>
                     <td>
-                        <button class="completeButton">complete</button>
-                        <button class="deleteButton">delete</button>
+                        <button class="completeButton button">✓</button>
+                        <button class="deleteButton button">-</button>
                     </td>
                 </tr>           
             `);
