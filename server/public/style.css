@@ -103,3 +103,17 @@ tr {
     color: white;
     border-color: white;
 }
+
+#sort {
+    font-size: 16px;
+    cursor: pointer;
+    border: 4px solid white;
+    border-radius: 16px;
+    background-color: #cd6163;
+}
+
+#sortIncomplete {
+    color:#f08080
+}
+#sortComplete {
+    color:#7fe5b2;
