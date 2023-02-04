@@ -24,8 +24,7 @@ h1 {
 }
 
 #taskInput{
-    margin-left: 225px;
-    width: 300px;
+    width: 500px;
     font-size: 16px;
     text-align: center;
 }
@@ -104,4 +103,3 @@ tr {
     color: white;
     border-color: white;
 }
-
