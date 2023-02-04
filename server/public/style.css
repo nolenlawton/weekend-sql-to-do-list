@@ -19,10 +19,12 @@ h1 {
     border: 4px solid;
     border-radius: 12px;
     display: flex;
-    justify-content:space-between
+    justify-content: space-between;
+    margin: auto;
 }
 
 #taskInput{
+    margin-left: 225px;
     width: 300px;
     font-size: 16px;
     text-align: center;
@@ -74,11 +76,21 @@ tr {
     width: 40px;
     height: 40px;
     border:#7fe5b2;
-    color:grey;
+    color: grey;
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
     border: 2px solid grey;
+}
+
+.afterCompleteButton {
+    width: 40px;
+    height: 40px;
+    background-color:#7fe5b2;
+    color:white;
+    border-radius: 50%;
+    font-size: 24px;
+    border: 2px solid white;
 }
 
 .onHoverAdd {
@@ -92,3 +104,4 @@ tr {
     color: white;
     border-color: white;
 }
+

@@ -55,6 +55,7 @@ function getTasks() {
                         (completed)
                     </td>
                     <td>
+                        <button class='afterCompleteButton'>✓</button>
                         <button class="deleteButton button">-</button>
                     </td>
                 </tr> 
