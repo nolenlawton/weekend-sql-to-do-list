@@ -45,7 +45,6 @@ function getTasks() {
         type: 'GET',
         url: '/task'
     }).then(function (response) {
-        console.log("GET /task response", response);
         for (let taskObject of response) {
             if (taskObject.isCompleted === true) {
                 $('#taskSection').append(`
@@ -105,17 +104,27 @@ function addTask () {
 
 // DELETE request!
 function deleteTask() {
-    console.log('task was deleted')
-    let id = $(this).parents('tr').data('id');
 
-    $.ajax({
-        method: 'DELETE',
-        url: `/task/${id}`   
-    }).then(() => {
-        getTasks();
-    }).catch((err) => {
-        console.error('DELETE failed', err);
-    })
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover task!",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            let id = $(this).parents('tr').data('id');
+
+            $.ajax({
+                method: 'DELETE',
+                url: `/task/${id}`   
+            }).then(() => {
+                getTasks();
+            }).catch((err) => {
+                console.error('DELETE failed', err);
+            })
+        }
+      });
 }
 
 // PUT request!
