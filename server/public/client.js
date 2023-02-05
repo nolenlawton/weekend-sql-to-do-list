@@ -70,13 +70,15 @@ function sortByCompletion() {
       url: '/task/byCompletion'
     }).then(function(response) {
         for (let taskObject of response) {
+
+            console.log(taskObject)
             if (taskObject.isCompleted === true) {
 
                 $('#taskSection').append(`
                 <tr data-id='${taskObject.id}' class='completed'>
                     <td>
                         ${taskObject.task}
-                        (completed)
+                        (completed on ${taskObject.completedDate})
                     </td>
                     <td>
                         <button class='afterCompleteButton'>✓</button>
@@ -142,6 +144,11 @@ function deleteTask() {
 function completeTask(event) {
     event.preventDefault();
 
+    let completionDay = new Date().getDate();
+    let completionMonth = new Date().getMonth() + 1;
+    let completionDate = `${completionMonth}/${completionDay}`   
+
+
     console.log('task was completed')
     let id = $(this).parents('tr').data('id');
 
@@ -149,12 +156,11 @@ function completeTask(event) {
         method: 'PUT',
         url: `/task/${id}`,
         data: {
-            isCompleted: true
+            isCompleted: true,
+            completionDate: completionDate
         }
     }).then(() => {
         getTasks()
-        // if($(this))
-
     }).catch((err) => {
         console.error('PUT failed', err);
     })

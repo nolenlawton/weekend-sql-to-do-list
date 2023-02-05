@@ -72,11 +72,12 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     const queryText = `
         UPDATE "to-do_table"
-        SET "isCompleted" = true
+        SET "isCompleted" = true, "completedDate" = $2
         WHERE id = $1;
     `;
     const queryParams = [
-        req.params.id // $1
+        req.params.id, // $1
+        req.body.completionDate // $2
     ];
 
     pool.query(queryText, queryParams)
