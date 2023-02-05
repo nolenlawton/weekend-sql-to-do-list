@@ -24,14 +24,16 @@ function onReady() {
     getTasks()
 }
 
-// GET request!
+// GET request! 
+// shows page of to-do
 function getTasks() {
     console.log('get tasks')
 
     $("#taskSection").empty();
-    $('#sort').empty()
+    $('#sort').empty();
 
-    $('#sort').append(`<p id="sortComplete">See Completed Tasks</p>`)
+    $('#completeIncomplete').text('To-Do');
+    $('#sort').append(`<p id="sortComplete">See Completed Tasks</p>`);
 
     $.ajax({
         type: 'GET',
@@ -59,10 +61,12 @@ function getTasks() {
 
 };
 
+// shows page of completed
 function sortByCompletion() {
     $("#taskSection").empty();
     $('#sort').empty()
 
+    $('#completeIncomplete').text('Completed');
     $('#sort').append(`<p id="sortIncomplete">See Incompleted Tasks</p>`)
   
     $.ajax({
@@ -166,6 +170,7 @@ function completeTask(event) {
     })
 }
 
+// changes color while hovering over complete
 function onHoverAdd() {
     $(this).addClass('onHoverAdd')
 }
@@ -173,6 +178,7 @@ function offHoverAdd() {
     $(this).removeClass('onHoverAdd')
 }
 
+// changes color while hovering over delete
 function onHoverDelete() {
     $(this).addClass('onHoverDelete')
 }

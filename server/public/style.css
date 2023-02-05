@@ -44,6 +44,10 @@ h1 {
     text-align: center;
 }
 
+#completeIncomplete {
+    margin-bottom: 0px
+}
+
 table {
     border-spacing: 25px;
   }
