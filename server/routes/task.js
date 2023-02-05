@@ -4,6 +4,7 @@ const router = express.Router();
 // DB CONNECTION
 const pool = require('../modules/pool');
 
+// GET endpoint for incomplete
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "to-do_table" ORDER BY "isCompleted" ASC`;
     pool.query(queryText)
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
         })
 });
 
+// GET endpoint for completed
 router.get('/byCompletion', (req, res) => {
     let queryText = 'SELECT * FROM "to-do_table" ORDER BY "isCompleted" DESC';
     pool.query(queryText).then(result => {
@@ -29,6 +31,7 @@ router.get('/byCompletion', (req, res) => {
     });
   });
 
+// POST endpoint
 router.post('/', (req, res) => {
     const newTask = req.body;
     const queryText = `
@@ -51,6 +54,7 @@ router.post('/', (req, res) => {
         })
 });
 
+// DELETE endpoint
 router.delete('/:id', (req, res) => {
     const queryText = `
         DELETE FROM "to-do_table"
@@ -69,6 +73,7 @@ router.delete('/:id', (req, res) => {
         });
 });
 
+// PUT endpoint with completion date
 router.put('/:id', (req, res) => {
     const queryText = `
         UPDATE "to-do_table"

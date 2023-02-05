@@ -12,6 +12,8 @@ function onReady() {
     $(document).on('click', '#sortComplete', sortByCompletion)
     $(document).on('click', '#sortIncomplete', getTasks)
 
+    $(document).on('click', '.colorPick', changeColor)
+
 
     $(document).on('click', '.completeButton', completeTask)
     $(document).on('mouseover', '.completeButton', onHoverAdd)
@@ -39,12 +41,14 @@ function getTasks() {
         type: 'GET',
         url: '/task'
     }).then(function (response) {
+        let taskNumber = 0;
         for (let taskObject of response) {
+            taskNumber++
             if (taskObject.isCompleted === false) {
                 $('#taskSection').append(`
                 <tr data-id='${taskObject.id}'>
                     <td>
-                        ${taskObject.task}
+                        ${taskNumber} - ${taskObject.task}
                     </td>
                     <td>
                         <button class="completeButton button">✓</button>
@@ -61,6 +65,7 @@ function getTasks() {
 
 };
 
+// GET request! 
 // shows page of completed
 function sortByCompletion() {
     $("#taskSection").empty();
@@ -74,8 +79,6 @@ function sortByCompletion() {
       url: '/task/byCompletion'
     }).then(function(response) {
         for (let taskObject of response) {
-
-            console.log(taskObject)
             if (taskObject.isCompleted === true) {
 
                 $('#taskSection').append(`
@@ -184,4 +187,8 @@ function onHoverDelete() {
 }
 function offHoverDelete() {
     $(this).removeClass('onHoverDelete')
+}
+
+function changeColor(){
+    $(this).addClass()
 }
