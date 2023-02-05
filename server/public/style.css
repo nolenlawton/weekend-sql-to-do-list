@@ -1,5 +1,5 @@
 body {
-    background-color: #80d4f0;
+    background-color: #1b4965;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: auto;
@@ -11,7 +11,7 @@ h1 {
 }
 
 #addTaskSection {
-    background-color: #f08080;
+    background-color: #62b6cb;
     width: 750px;
     margin: auto;
     margin-bottom: 25px;
@@ -34,7 +34,7 @@ h1 {
 }
 
 #toDoSection {
-    background-color: #f08080;
+    background-color: #62b6cb;
     width: 750px;
     margin: auto;
     margin-bottom: 25px;
@@ -42,14 +42,6 @@ h1 {
     border: 4px solid;
     border-radius: 12px;
     text-align: center;
-}
-
-#toDoTitle {
-    border-bottom: #80d4f0;
-}
-
-#taskSection{
-    justify-content:space-between
 }
 
 table {
@@ -64,7 +56,7 @@ tr {
     border-radius: 12px;
     display: flex;
     justify-content:space-between;
-    background-color: #cd6163;
+    background-color: #5fa8d3;
 }
 
 .completed {
@@ -99,7 +91,7 @@ tr {
 }
 
 .onHoverDelete {
-    background-color: red;
+    background-color: lightcoral;
     color: white;
     border-color: white;
 }
@@ -109,11 +101,11 @@ tr {
     cursor: pointer;
     border: 4px solid white;
     border-radius: 16px;
-    background-color: #cd6163;
+    background-color: #5fa8d3;
 }
 
 #sortIncomplete {
-    color:#f08080
+    color:lightcoral
 }
 #sortComplete {
     color:#7fe5b2;
