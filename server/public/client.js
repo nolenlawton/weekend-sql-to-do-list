@@ -9,6 +9,9 @@ function onReady() {
     $('#addTaskButton').on('mouseover', onHoverAdd)
     $('#addTaskButton').on('mouseout', offHoverAdd)
 
+    $(document).on('click', '#sortComplete', sortByCompletion)
+    $(document).on('click', '#sortIncomplete', getTasks)
+
 
     $(document).on('click', '.completeButton', completeTask)
     $(document).on('mouseover', '.completeButton', onHoverAdd)
@@ -21,46 +24,21 @@ function onReady() {
     getTasks()
 }
 
-function onHoverAdd() {
-    $(this).addClass('onHoverAdd')
-}
-function offHoverAdd() {
-    $(this).removeClass('onHoverAdd')
-}
-
-function onHoverDelete() {
-    $(this).addClass('onHoverDelete')
-}
-function offHoverDelete() {
-    $(this).removeClass('onHoverDelete')
-}
-
 // GET request!
 function getTasks() {
     console.log('get tasks')
 
     $("#taskSection").empty();
+    $('#sort').empty()
+
+    $('#sort').append(`<p id="sortComplete">See Completed Tasks</p>`)
 
     $.ajax({
         type: 'GET',
         url: '/task'
     }).then(function (response) {
         for (let taskObject of response) {
-            if (taskObject.isCompleted === true) {
-                $('#taskSection').append(`
-                <tr data-id='${taskObject.id}' class='completed'>
-                    <td>
-                        ${taskObject.task}
-                        (completed)
-                    </td>
-                    <td>
-                        <button class='afterCompleteButton'>✓</button>
-                        <button class="deleteButton button">-</button>
-                    </td>
-                </tr> 
-            `);
-            }
-            else {
+            if (taskObject.isCompleted === false) {
                 $('#taskSection').append(`
                 <tr data-id='${taskObject.id}'>
                     <td>
@@ -80,6 +58,39 @@ function getTasks() {
 
 
 };
+
+function sortByCompletion() {
+    $("#taskSection").empty();
+    $('#sort').empty()
+
+    $('#sort').append(`<p id="sortIncomplete">See Incompleted Tasks</p>`)
+  
+    $.ajax({
+      type: 'GET',
+      url: '/task/byCompletion'
+    }).then(function(response) {
+        for (let taskObject of response) {
+            if (taskObject.isCompleted === true) {
+
+                $('#taskSection').append(`
+                <tr data-id='${taskObject.id}' class='completed'>
+                    <td>
+                        ${taskObject.task}
+                        (completed)
+                    </td>
+                    <td>
+                        <button class='afterCompleteButton'>✓</button>
+                        <button class="deleteButton button">-</button>
+                    </td>
+                </tr> 
+            `);
+            }
+        };
+    }).catch(function(error){
+      console.log('error in GET', error);
+    });
+  
+  }
 
 // POST request!
 function addTask () {
@@ -147,4 +158,18 @@ function completeTask(event) {
     }).catch((err) => {
         console.error('PUT failed', err);
     })
+}
+
+function onHoverAdd() {
+    $(this).addClass('onHoverAdd')
+}
+function offHoverAdd() {
+    $(this).removeClass('onHoverAdd')
+}
+
+function onHoverDelete() {
+    $(this).addClass('onHoverDelete')
+}
+function offHoverDelete() {
+    $(this).removeClass('onHoverDelete')
 }
