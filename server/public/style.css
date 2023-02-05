@@ -45,7 +45,7 @@ h1 {
 }
 
 #completeIncomplete {
-    margin-bottom: 0px
+    margin-bottom: 0px;
 }
 
 table {
@@ -113,4 +113,14 @@ tr {
 }
 #sortComplete {
     color:#7fe5b2;
+}
+
+.taskNumber {
+    font-size: 8px;
+    text-align: left;
+    background-color: #62b6cb;
+    width: 8px;
+    border: 2px solid;
+    border-radius: 16px;
+    padding-left: 2px;
 }

@@ -34,7 +34,7 @@ function getTasks() {
     $("#taskSection").empty();
     $('#sort').empty();
 
-    $('#completeIncomplete').text('To-Do');
+    
     $('#sort').append(`<p id="sortComplete">See Completed Tasks</p>`);
 
     $.ajax({
@@ -43,12 +43,13 @@ function getTasks() {
     }).then(function (response) {
         let taskNumber = 0;
         for (let taskObject of response) {
-            taskNumber++
             if (taskObject.isCompleted === false) {
+                taskNumber++
                 $('#taskSection').append(`
                 <tr data-id='${taskObject.id}'>
                     <td>
-                        ${taskNumber} - ${taskObject.task}
+                        
+                        ${taskObject.task}
                     </td>
                     <td>
                         <button class="completeButton button">✓</button>
@@ -58,6 +59,7 @@ function getTasks() {
             `);
             };
         };
+        $('#completeIncomplete').text(`${taskNumber} Tasks`);
     }).catch((err) => {
         console.error('GET failed', err);
     });
